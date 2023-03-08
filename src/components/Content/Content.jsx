@@ -1,8 +1,6 @@
 import React from "react";
 import "../../styles/components/content.sass";
 import { moviemock } from "../../mock/moviemock";
-const url =
-  "https://ae01.alicdn.com/kf/Ha3e0e09ba963479b8666b3f4462c4ab6z/Premiado-filme-whiplash-matte-kraft-cartaz-de-papel-escrit-rio-presente-sala-de-jantar-decora-o.jpg";
 
 export default function Content() {
   return (
