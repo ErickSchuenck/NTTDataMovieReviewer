@@ -5,20 +5,23 @@ import { Button } from "@ui5/webcomponents-react";
 import { useDispatch } from "react-redux";
 import { changeMovie } from "../../store/movie";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Title() {
-  async function getMovie(movie) {
-    try {
-      axios.get("http://localhost:5000/movie", movie).then((response) => {
+  async function getMovie(ActiveMovie) {
+    console.log(ActiveMovie);
+    const URL = "http://localhost:5000/movie";
+    const data = { movie: ActiveMovie };
+
+    axios
+      .post(URL, data)
+      .then((response) => {
         console.log(response);
-        if (!response.Response) toast("Ops, movie not found!");
+        if (response.data.Response === "False") toast("Ops, movie not found!");
         //mexe na store
-      });
-    } catch (e) {
-      console.log(e.response);
-    }
+      })
+      .catch((e) => console.log(e));
   }
 
   const dispatch = useDispatch();
@@ -38,6 +41,8 @@ export default function Title() {
           placeholder="movie"
           onChange={(e) => setActiveMovie(e.target.value)}
         />
+        <Button onClick={() => getMovie(ActiveMovie)}>Search</Button>
+        {/* //APAGAR BOTÃO ABAIXO */}
         <Button
           onClick={() => {
             dispatch(
@@ -47,9 +52,9 @@ export default function Title() {
             );
           }}
         >
-          Search
+          TESTING
         </Button>
-        <Button onClick={() => getMovie(ActiveMovie)}>Refresh</Button>
+        {/* //APAGAR BOTÃO ACIMA */}
       </div>
     </div>
   );
