@@ -10,26 +10,30 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Title() {
   async function getMovie(ActiveMovie) {
-    console.log(ActiveMovie);
     const URL = "http://localhost:5000/movie";
     const data = { movie: ActiveMovie };
 
-    axios
-      .post(URL, data)
-      .then((response) => {
-        console.log(response);
-        if (response.data.Response === "False") toast("Ops, movie not found!");
-        //mexe na store
-      })
-      .catch((e) => console.log(e));
-  }
+    try {
+      const response = await axios.post(URL, data);
+      console.log(response);
 
-  const dispatch = useDispatch();
+      if (response.data.Response === "False") {
+        toast("Ops, movie not found!");
+        return;
+      }
+
+      dispatch(changeMovie(response.data));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   const [ActiveMovie, setActiveMovie] = useState("");
   useEffect(() => {
     setActiveMovie(ActiveMovie);
   }, [ActiveMovie]);
+
+  const dispatch = useDispatch();
 
   return (
     <div id="title">
@@ -42,19 +46,6 @@ export default function Title() {
           onChange={(e) => setActiveMovie(e.target.value)}
         />
         <Button onClick={() => getMovie(ActiveMovie)}>Search</Button>
-        {/* //APAGAR BOTÃO ABAIXO */}
-        <Button
-          onClick={() => {
-            dispatch(
-              changeMovie({
-                Title: "22222222222",
-              })
-            );
-          }}
-        >
-          TESTING
-        </Button>
-        {/* //APAGAR BOTÃO ACIMA */}
       </div>
     </div>
   );
