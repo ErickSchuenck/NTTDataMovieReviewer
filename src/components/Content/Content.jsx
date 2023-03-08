@@ -1,17 +1,19 @@
 import React from "react";
 import "../../styles/components/content.sass";
-import { moviemock } from "../../mock/moviemock";
+import { useSelector } from "react-redux";
 
 export default function Content() {
+  const movie = useSelector((state) => state.movie.value);
+
   return (
     <section id="content">
-      <img id="poster" src={moviemock.Poster} alt="poster" />
+      <img id="poster" src={movie.Poster} alt="poster" />
       <div id="description">
-        <h1>{moviemock.Title}</h1>
-        <h2>{moviemock.Plot}</h2>
-        <h2>{moviemock.Actors}</h2>
-        <h1>Metascore: {moviemock.Metascore}</h1>
-        <h1>ImdbRating: {moviemock.imdbRating}</h1>
+        <h1>{movie.Title} teste</h1>
+        <h2>{movie.Plot}</h2>
+        <h2>{movie.Actors}</h2>
+        <h1>Metascore: {movie.Metascore}</h1>
+        <h1>ImdbRating: {movie.imdbRating}</h1>
       </div>
     </section>
   );
