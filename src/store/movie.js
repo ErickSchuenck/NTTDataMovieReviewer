@@ -52,4 +52,6 @@ export const movieSlice = createSlice({
   },
 });
 
+export const changeMovie = movieSlice.actions;
+
 export default movieSlice.reducer;

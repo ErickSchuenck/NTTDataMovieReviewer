@@ -9,7 +9,7 @@ export default function Content() {
     <section id="content">
       <img id="poster" src={movie.Poster} alt="poster" />
       <div id="description">
-        <h1>{movie.Title} teste</h1>
+        <h1>{movie.Title}</h1>
         <h2>{movie.Plot}</h2>
         <h2>{movie.Actors}</h2>
         <h1>Metascore: {movie.Metascore}</h1>
