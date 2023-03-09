@@ -47,11 +47,11 @@ export const movieSlice = createSlice({
   },
   reducers: {
     changeMovie: (state, action) => {
+      console.log("reducer", action);
       state.value = action.payload;
     },
   },
 });
 
-export const changeMovie = movieSlice.actions;
-
+export const { changeMovie } = movieSlice.actions;
 export default movieSlice.reducer;

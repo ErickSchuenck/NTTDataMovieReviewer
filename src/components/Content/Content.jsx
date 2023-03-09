@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function Content() {
   const movie = useSelector((state) => state.movie.value);
-
+  console.log("AQUI   ", movie);
   return (
     <section id="content">
       <img id="poster" src={movie.Poster} alt="poster" />
