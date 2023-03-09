@@ -6,8 +6,8 @@ Warning: The frontend of this project runs on http://localhost:3000/, while the 
 Getting Started
 Clone the following repositories:
 
-Frontend: [link]
-Backend: [link]
+Frontend: https://github.com/ErickSchuenck/NTTDataMovieReviewer.git
+Backend: https://github.com/ErickSchuenck/NTTbackend.git
 Use the npm i command on the terminal to install dependencies, and npm start to initiate both front and backend.
 
 How to Use
