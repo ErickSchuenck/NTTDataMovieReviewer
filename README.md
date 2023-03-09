@@ -16,9 +16,5 @@ Type the name of the movie you want to get information about in the search bar a
 Restrictions
 Since this project uses the OMDb API, usage is restricted to 1000 requests/day.
 
-Prerequisites
-To use this software, you need to install the following:
-
-[list of prerequisites]
 Author
 Erick Schuenck F Mokdeci - 08/03/2023
