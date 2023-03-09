@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/components/title.sass";
-import { useState, useEffect } from "react";
 import { Button } from "@ui5/webcomponents-react";
 import { useDispatch } from "react-redux";
 import { changeMovie } from "../../store/movie";
@@ -9,6 +8,13 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Title() {
+  const dispatch = useDispatch();
+
+  const [ActiveMovie, setActiveMovie] = useState("");
+  useEffect(() => {
+    setActiveMovie(ActiveMovie);
+  }, [ActiveMovie]);
+
   async function getMovie(ActiveMovie) {
     const URL = "http://localhost:5000/movie";
     const data = { movie: ActiveMovie };
@@ -27,13 +33,6 @@ export default function Title() {
       console.log(error);
     }
   }
-
-  const [ActiveMovie, setActiveMovie] = useState("");
-  useEffect(() => {
-    setActiveMovie(ActiveMovie);
-  }, [ActiveMovie]);
-
-  const dispatch = useDispatch();
 
   return (
     <div id="title">
