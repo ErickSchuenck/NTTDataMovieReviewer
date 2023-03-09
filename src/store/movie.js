@@ -47,7 +47,6 @@ export const movieSlice = createSlice({
   },
   reducers: {
     changeMovie: (state, action) => {
-      console.log("reducer", action);
       state.value = action.payload;
     },
   },

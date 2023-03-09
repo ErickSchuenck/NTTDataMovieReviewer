@@ -21,13 +21,10 @@ export default function Title() {
 
     try {
       const response = await axios.post(URL, data);
-      console.log(response);
-
       if (response.data.Response === "False") {
         toast("Ops, movie not found!");
         return;
       }
-
       dispatch(changeMovie(response.data));
     } catch (error) {
       console.log(error);
